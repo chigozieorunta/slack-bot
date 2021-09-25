@@ -25,7 +25,7 @@ This repository includes a WordPress development environment based on [Docker](h
 
 2. Setup the development environment and tools using [Node.js](https://nodejs.org) and [Composer](https://getcomposer.org):
 
-        npm install
+	npm install
 
 Note that both Node.js and PHP 7.2 or later are required on your computer for running the `npm` scripts. Use `npm run docker -- npm install` to run the installer inside a Docker container if you don't have the required version of PHP installed locally.
 
@@ -33,13 +33,13 @@ Note that both Node.js and PHP 7.2 or later are required on your computer for ru
 
 3. To use the Vagrant based environment, run:
 
-    vagrant up
+	vagrant up
 
 which will make it available at [slack-bot.local](http://slack-bot.local).
 
 Use the included wrapper command for running scripts inside the Docker container running inside Vagrant:
 
-    npm run vagrant -- npm run test:php
+	npm run vagrant -- npm run test:php
 
 where `npm run test:php` is any of the scripts you would like to run.
 
