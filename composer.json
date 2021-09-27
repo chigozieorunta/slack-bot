@@ -19,5 +19,8 @@
     "psr-4": {
       "SlackBot\\SlackBot\\": "tests/php/"
     }
+  },
+  "require-dev": {
+    "wpsh/local": "0.2.3"
   }
 }
