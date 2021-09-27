@@ -21,6 +21,7 @@
     }
   },
   "require-dev": {
-    "wpsh/local": "0.2.3"
+    "wpsh/local": "0.2.3",
+    "phpunit/phpunit": "8.5.2"
   }
 }
