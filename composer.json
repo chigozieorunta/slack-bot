@@ -9,5 +9,10 @@
     "php": ">=7.2",
     "alek13/slack": "^2.1",
     "composer/installers": "^1.7"
+  },
+  "autoload": {
+    "psr-4": {
+      "SlackBot\\SlackBot\\": "src/"
+    }
   }
 }
