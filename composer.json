@@ -12,12 +12,12 @@
   },
   "autoload": {
     "psr-4": {
-      "SlackBot\\SlackBot\\": "src/"
+      "SlackBot\\": "src/"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "SlackBot\\SlackBot\\": "tests/php/"
+      "SlackBot\\": "tests/php/"
     }
   },
   "require-dev": {
