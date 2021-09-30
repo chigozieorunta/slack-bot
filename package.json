@@ -1,19 +1,15 @@
 {
   "name": "slack-bot",
   "version": "1.0.0",
-  "description": "The Slack Bot plugin is a simple notification plugin built to help alert WordPress site owners when posts, pages, CPTs have been created or published. It sends a simple notification message to the specified slack channel the user requires it to.",
-  "main": "webpack.config.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/chigozieorunta/slack-bot.git"
-  },
-  "author": "",
-  "license": "ISC",
+  "description": "Slack Bot for WordPress",
+  "author": "Chigozie Orunta",
+  "license": "GPL-2.0-or-later",
   "bugs": {
     "url": "https://github.com/chigozieorunta/slack-bot/issues"
   },
-  "homepage": "https://github.com/chigozieorunta/slack-bot#readme"
+  "homepage": "https://github.com/chigozieorunta/slack-bot#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chigozieorunta/slack-bot.git"
+  }
 }
