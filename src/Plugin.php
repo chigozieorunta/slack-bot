@@ -25,7 +25,7 @@ class Plugin {
 	 * @return void
 	 */
 	public function __construct() {
-		//...
+		//..
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Plugin {
 	 * @return Plugin $plugin Instance of the plugin abstraction.
 	 */
 	public static function init() {
-		if ( self::$instance === null ) {
+		if ( null === self::$instance ) {
 			self::$instance = new self();
 		}
 
