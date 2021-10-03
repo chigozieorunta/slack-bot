@@ -13,6 +13,13 @@ namespace SlackBot;
 class Plugin {
 
 	/**
+	 * Plugin's singleton instance
+	 *
+	 * @var object
+	 */
+	private static $instance;
+
+	/**
 	 * Setup the plugin.
 	 *
 	 * @return void
@@ -27,10 +34,10 @@ class Plugin {
 	 * @return Plugin $plugin Instance of the plugin abstraction.
 	 */
 	public static function init() {
-		static $instance;
-		if ( ! $instance === null ) {
-			$instance = new self();
+		if ( self::$instance === null ) {
+			self::$instance = new self();
 		}
-		return instance;
+
+		return self::$instance;
 	}
 }
