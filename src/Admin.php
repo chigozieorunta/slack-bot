@@ -7,9 +7,9 @@
 
 namespace SlackBot;
 
-/**
- * Admin Page interface
- */
+use Carbon_Fields\Container;
+use Carbon_Fields\Field;
+
 class Admin {
 
 	/**
