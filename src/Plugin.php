@@ -47,4 +47,15 @@ class Plugin {
 
 		return self::$instance;
 	}
+
+	/**
+     * Get Plugin Title
+     *
+     * @return string
+     */
+    public function get_title() {
+        $title = 'Slack Bot';
+
+        return __( $title, 'slack-bot' );
+    }
 }
