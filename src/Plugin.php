@@ -20,12 +20,19 @@ class Plugin {
 	private static $instance;
 
 	/**
+	 * Private instance of admin class
+	 *
+	 * @var object
+	 */
+	private $admin;
+
+	/**
 	 * Setup the plugin.
 	 *
 	 * @return void
 	 */
 	public function __construct() {
-		//..
+		$this->admin = new Admin($this);
 	}
 
 	/**
