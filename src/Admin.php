@@ -13,11 +13,18 @@ use Carbon_Fields\Field;
 class Admin {
 
 	/**
+	 * Plugin instance
+	 *
+	 * @var object
+	 */
+	private $plugin;
+
+	/**
 	 * Instantiate class
 	 *
 	 * @return void
 	 */
-	public function __construct() {
-		//..
+	public function __construct(Plugin $plugin) {
+		$this->plugin = $plugin;
 	}
 }
