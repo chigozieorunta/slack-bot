@@ -51,6 +51,25 @@ class Admin {
 
 		->set_page_menu_position( 3 )
 		
-		->set_icon( 'dashicons-format-chat' );
+		->set_icon( 'dashicons-format-chat' )
+
+		->add_fields( array(
+			Field::make( 'html', 'crb_title' )
+			->set_html( '<strong>' . __( 'Description', 'slack-bot' ) . '</strong>' ),
+
+			Field::make( 'html', 'crb_desc' )
+			->set_html( $this->plugin->get_description() ),
+
+			Field::make( 'text', 'crb_slack_username', 'Slack Username' )
+			->help_text( 'e.g. John Doe' )
+			->set_width( 50 ),
+
+			Field::make( 'text', 'crb_slack_channel', 'Slack Channel' )
+			->help_text( 'e.g. general' )
+			->set_width( 50 ),
+
+			Field::make( 'text', 'crb_slack_webhook', 'Slack WebHook' )
+			->help_text( 'e.g. https://hooks.slack.com/services/xxxxxx' )
+		) );
     }
 }
