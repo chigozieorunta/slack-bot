@@ -69,4 +69,15 @@ class Plugin {
 
         return __( $description, 'slack-bot' );
     }
+
+	/**
+     * Get Plugin Author
+     *
+     * @return string
+     */
+    public function get_pauthor() {
+        $author = 'Chigozie Orunta';
+
+        return __( $author, 'slack-bot' );
+    }
 }
