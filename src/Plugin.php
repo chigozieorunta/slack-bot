@@ -32,7 +32,7 @@ class Plugin {
 	 * @return void
 	 */
 	public function __construct() {
-		$this->admin = new Admin($this);
+		$this->admin = new Admin( $this );
 	}
 
 	/**
@@ -49,35 +49,29 @@ class Plugin {
 	}
 
 	/**
-     * Get Plugin Title
-     *
-     * @return string
-     */
-    public function get_title() {
-        $title = 'Slack Bot';
-
-        return __( $title, 'slack-bot' );
+	 * Get Plugin Title
+	 *
+	 * @return string
+	 */
+	public function get_title() {
+		return __( 'Slack Bot', 'slack-bot' );
     }
 
 	/**
-     * Get Plugin Description
-     *
-     * @return string
-     */
-    public function get_description() {
-        $description = 'The Slack Bot plugin is a simple notification plugin built to help alert WordPress site owners when posts, pages, CPTs have been created or published. It sends a simple notification message to the specified slack channel via your Slack webhook. To get your Slack webhook, please visit the Slack API page.';
-
-        return __( $description, 'slack-bot' );
+	 * Get Plugin Description
+	 *
+	 * @return string
+	 */
+	public function get_description() {
+		return __( 'The Slack Bot plugin is a simple notification plugin built to help alert WordPress site owners when posts, pages, CPTs have been created or published. It sends a simple notification message to the specified slack channel via your Slack webhook. To get your Slack webhook, please visit the Slack API page.', 'slack-bot' );
     }
 
 	/**
-     * Get Plugin Author
-     *
-     * @return string
-     */
-    public function get_author() {
-        $author = 'Chigozie Orunta';
-
-        return __( $author, 'slack-bot' );
-    }
+	 * Get Plugin Author
+	 *
+	 * @return string
+	 */
+	public function get_author() {
+		return __( 'Chigozie Orunta', 'slack-bot' );
+	}
 }
