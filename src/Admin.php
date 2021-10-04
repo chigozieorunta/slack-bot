@@ -47,6 +47,8 @@ class Admin {
     public function load_fields() {
         Container::make( 'theme_options', $this->plugin->get_title() )
 
-		->set_page_menu_position( 3 )
+		->set_page_file( 'slack-bot' )
+
+		->set_page_menu_position( 3 );
     }
 }
