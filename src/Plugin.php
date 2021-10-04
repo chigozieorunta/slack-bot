@@ -58,4 +58,15 @@ class Plugin {
 
         return __( $title, 'slack-bot' );
     }
+
+	/**
+     * Get Plugin Description
+     *
+     * @return string
+     */
+    public function get_description() {
+        $description = 'The Slack Bot plugin is a simple notification plugin built to help alert WordPress site owners when posts, pages, CPTs have been created or published. It sends a simple notification message to the specified slack channel via your Slack webhook. To get your Slack webhook, please visit the Slack API page.';
+
+        return __( $description, 'slack-bot' );
+    }
 }
