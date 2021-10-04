@@ -75,7 +75,7 @@ class Plugin {
      *
      * @return string
      */
-    public function get_pauthor() {
+    public function get_author() {
         $author = 'Chigozie Orunta';
 
         return __( $author, 'slack-bot' );
