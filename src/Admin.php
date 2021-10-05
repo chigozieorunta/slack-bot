@@ -10,6 +10,9 @@ namespace SlackBot;
 use Carbon_Fields\Container;
 use Carbon_Fields\Field;
 
+/**
+ * WordPress admin page
+ */
 class Admin {
 
 	/**
@@ -24,32 +27,34 @@ class Admin {
 	 *
 	 * @var string
 	 */
-    private $username;
+	private $username;
 
 	/**
 	 * Slack Channel
 	 *
 	 * @var string
 	 */
-    private $channel;
+	private $channel;
 
 	/**
 	 * Slack WebHook
 	 *
 	 * @var string
 	 */
-    private $webhook;
+	private $webhook;
 
 	/**
 	 * Instantiate class
 	 *
+	 * @param Plugin $plugin Plugin Instance.
+	 *
 	 * @return void
 	 */
-	public function __construct(Plugin $plugin) {
+	public function __construct( Plugin $plugin ) {
 		$this->plugin = $plugin;
 		add_action( 'after_setup_theme', [ $this, 'init' ] );
-        add_action( 'carbon_fields_register_fields', [ $this, 'load_fields' ] );
-        add_action( 'carbon_fields_register_fields', [ $this, 'set_fields' ] );
+		add_action( 'carbon_fields_register_fields', [ $this, 'load_fields' ] );
+		add_action( 'carbon_fields_register_fields', [ $this, 'set_fields' ] );
 	}
 
 	/**
@@ -58,53 +63,55 @@ class Admin {
 	 * @return void
 	 */
 	public function init() {
-        \Carbon_Fields\Carbon_Fields::boot();
-    }
+		\Carbon_Fields\Carbon_Fields::boot();
+	}
 
 	/**
-     * Load plugin fields
-     *
-     * @return void
-     */
-    public function load_fields() {
-        Container::make( 'theme_options', $this->plugin->get_title() )
+	 * Load plugin fields
+	 *
+	 * @return void
+	 */
+	public function load_fields() {
+		Container::make( 'theme_options', $this->plugin->get_title() )
 
 		->set_page_file( 'slack-bot' )
 
 		->set_page_menu_position( 3 )
-		
+
 		->set_icon( 'dashicons-format-chat' )
 
-		->add_fields( array(
-			Field::make( 'html', 'crb_title' )
-			->set_html( '<strong>' . __( 'Description', 'slack-bot' ) . '</strong>' ),
+		->add_fields(
+			array(
+				Field::make( 'html', 'crb_title' )
+				->set_html( '<strong>' . __( 'Description', 'slack-bot' ) . '</strong>' ),
 
-			Field::make( 'html', 'crb_desc' )
-			->set_html( $this->plugin->get_description() ),
+				Field::make( 'html', 'crb_desc' )
+				->set_html( $this->plugin->get_description() ),
 
-			Field::make( 'text', 'crb_slack_username', 'Slack Username' )
-			->help_text( 'e.g. John Doe' )
-			->set_width( 50 ),
+				Field::make( 'text', 'crb_slack_username', 'Slack Username' )
+				->help_text( 'e.g. John Doe' )
+				->set_width( 50 ),
 
-			Field::make( 'text', 'crb_slack_channel', 'Slack Channel' )
-			->help_text( 'e.g. general' )
-			->set_width( 50 ),
+				Field::make( 'text', 'crb_slack_channel', 'Slack Channel' )
+				->help_text( 'e.g. general' )
+				->set_width( 50 ),
 
-			Field::make( 'text', 'crb_slack_webhook', 'Slack WebHook' )
-			->help_text( 'e.g. https://hooks.slack.com/services/xxxxxx' )
-		) );
-    }
+				Field::make( 'text', 'crb_slack_webhook', 'Slack WebHook' )
+				->help_text( 'e.g. https://hooks.slack.com/services/xxxxxx' ),
+			)
+		);
+	}
 
 	/**
 	 * Retrieve Carbon Field values and set private variables
 	 *
 	 * @return void
 	 */
-    public function set_fields() {
-        $this->username = carbon_get_theme_option( 'crb_slack_username' );
-        $this->channel = carbon_get_theme_option( 'crb_slack_channel' );
-        $this->webhook = carbon_get_theme_option( 'crb_slack_webhook' );
-    }
+	public function set_fields() {
+		$this->username = carbon_get_theme_option( 'crb_slack_username' );
+		$this->channel  = carbon_get_theme_option( 'crb_slack_channel' );
+		$this->webhook  = carbon_get_theme_option( 'crb_slack_webhook' );
+	}
 
 	/**
 	 * Return private username
