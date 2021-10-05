@@ -44,12 +44,12 @@ class Plugin {
      * @return void
      */
     public function notify_my_slack( $post_id, $post ) {
-        $slack_hook = $this->admin->webhook;
+        $slack_hook = $this->admin->get_webhook();
         $slack_message = 'New Post alert | %3$s: *%2$s* - %1$s';
         $slack_message = sprintf( $slack_message, get_permalink( $post_id ), $post->post_title, $post->post_date );
         $settings = [
-            'username' => $this->admin->username,
-            'channel'  => $this->admin->channel,
+            'username' => $this->admin->get_username(),
+            'channel'  => $this->admin->get_channel(),
         ];
         $client = new Client( $slack_hook, $settings );
         $client->send( $slack_message );
