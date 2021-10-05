@@ -7,6 +7,8 @@
 
 namespace SlackBot;
 
+use Maknz\Slack\Client;
+
 /**
  * WordPress plugin interface.
  */
@@ -33,7 +35,25 @@ class Plugin {
 	 */
 	public function __construct() {
 		$this->admin = new Admin( $this );
+        add_action( 'publish_post', [ $this, 'notify_my_slack' ], 10, 2);
 	}
+
+    /**
+     * Notify Slack
+     *
+     * @return void
+     */
+    public function notify_my_slack( $post_id, $post ) {
+        $slack_hook = $this->admin->get_webhook();
+        $slack_message = 'New Post alert | %3$s: *%2$s* - %1$s';
+        $slack_message = sprintf( $slack_message, get_permalink( $post_id ), $post->post_title, $post->post_date );
+        $settings = [
+            'username' => $this->admin->get_username(),
+            'channel'  => $this->admin->get_channel(),
+        ];
+        $client = new Client( $slack_hook, $settings );
+        $client->send( $slack_message );
+    }
 
 	/**
 	 * Plugin Entry point based on Singleton

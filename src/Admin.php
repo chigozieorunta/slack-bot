@@ -20,6 +20,27 @@ class Admin {
 	private $plugin;
 
 	/**
+	 * Slack Username
+	 *
+	 * @var string
+	 */
+    private $username;
+
+	/**
+	 * Slack Channel
+	 *
+	 * @var string
+	 */
+    private $channel;
+
+	/**
+	 * Slack WebHook
+	 *
+	 * @var string
+	 */
+    private $webhook;
+
+	/**
 	 * Instantiate class
 	 *
 	 * @return void
@@ -28,6 +49,7 @@ class Admin {
 		$this->plugin = $plugin;
 		add_action( 'after_setup_theme', [ $this, 'init' ] );
         add_action( 'carbon_fields_register_fields', [ $this, 'load_fields' ] );
+        add_action( 'carbon_fields_register_fields', [ $this, 'set_fields' ] );
 	}
 
 	/**
@@ -72,4 +94,42 @@ class Admin {
 			->help_text( 'e.g. https://hooks.slack.com/services/xxxxxx' )
 		) );
     }
+
+	/**
+	 * Retrieve Carbon Field values and set private variables
+	 *
+	 * @return void
+	 */
+    public function set_fields() {
+        $this->username = carbon_get_theme_option( 'crb_slack_username' );
+        $this->channel = carbon_get_theme_option( 'crb_slack_channel' );
+        $this->webhook = carbon_get_theme_option( 'crb_slack_webhook' );
+    }
+
+	/**
+	 * Return private username
+	 *
+	 * @return string
+	 */
+	public function get_username() {
+		return $this->username;
+	}
+
+	/**
+	 * Return private channel
+	 *
+	 * @return string
+	 */
+	public function get_channel() {
+		return $this->channel;
+	}
+
+	/**
+	 * Return private webhook
+	 *
+	 * @return string
+	 */
+	public function get_webhook() {
+		return $this->webhook;
+	}
 }
