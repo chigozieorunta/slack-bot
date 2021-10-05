@@ -37,6 +37,23 @@ class Plugin {
 		$this->admin = new Admin( $this );
 	}
 
+    /**
+     * Notify Slack
+     *
+     * @return void
+     */
+    public function notify_my_slack( $post_id, $post ) {
+        $slack_hook = $this->admin->webhook;
+        $slack_message = 'New Post alert | %3$s: *%2$s* - %1$s';
+        $slack_message = sprintf( $slack_message, get_permalink( $post_id ), $post->post_title, $post->post_date );
+        $settings = [
+            'username' => $this->admin->username,
+            'channel'  => $this->admin->channel,
+        ];
+        $client = new Client( $slack_hook, $settings );
+        $client->send( $slack_message );
+    }
+
 	/**
 	 * Plugin Entry point based on Singleton
 	 *
