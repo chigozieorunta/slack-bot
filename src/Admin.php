@@ -20,6 +20,27 @@ class Admin {
 	private $plugin;
 
 	/**
+	 * Slack Username
+	 *
+	 * @var string
+	 */
+    private $username;
+
+	/**
+	 * Slack Channel
+	 *
+	 * @var string
+	 */
+    private $channel;
+
+	/**
+	 * Slack WebHook
+	 *
+	 * @var string
+	 */
+    private $webhook;
+
+	/**
 	 * Instantiate class
 	 *
 	 * @return void
