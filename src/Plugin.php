@@ -35,25 +35,28 @@ class Plugin {
 	 */
 	public function __construct() {
 		$this->admin = new Admin( $this );
-        add_action( 'publish_post', [ $this, 'notify_my_slack' ], 10, 2);
+		add_action( 'publish_post', [ $this, 'notify_my_slack' ], 10, 2 );
 	}
 
-    /**
-     * Notify Slack
-     *
-     * @return void
-     */
-    public function notify_my_slack( $post_id, $post ) {
-        $slack_hook = $this->admin->get_webhook();
-        $slack_message = 'New Post alert | %3$s: *%2$s* - %1$s';
-        $slack_message = sprintf( $slack_message, get_permalink( $post_id ), $post->post_title, $post->post_date );
-        $settings = [
-            'username' => $this->admin->get_username(),
-            'channel'  => $this->admin->get_channel(),
-        ];
-        $client = new Client( $slack_hook, $settings );
-        $client->send( $slack_message );
-    }
+	/**
+	 * Notify Slack
+	 *
+	 * @param int    $post_id WP Post ID.
+	 * @param object $post WP Post Object.
+	 *
+	 * @return void
+	 */
+	public function notify_my_slack( $post_id, $post ) {
+		$slack_hook    = $this->admin->get_webhook();
+		$slack_message = 'New Post alert | %3$s: *%2$s* - %1$s';
+		$slack_message = sprintf( $slack_message, get_permalink( $post_id ), $post->post_title, $post->post_date );
+		$settings      = [
+			'username' => $this->admin->get_username(),
+			'channel'  => $this->admin->get_channel(),
+		];
+		$client        = new Client( $slack_hook, $settings );
+		$client->send( $slack_message );
+	}
 
 	/**
 	 * Plugin Entry point based on Singleton
@@ -75,7 +78,7 @@ class Plugin {
 	 */
 	public function get_title() {
 		return __( 'Slack Bot', 'slack-bot' );
-    }
+	}
 
 	/**
 	 * Get Plugin Description
@@ -84,7 +87,7 @@ class Plugin {
 	 */
 	public function get_description() {
 		return __( 'The Slack Bot plugin is a simple notification plugin built to help alert WordPress site owners when posts, pages, CPTs have been created or published. It sends a simple notification message to the specified slack channel via your Slack webhook. To get your Slack webhook, please visit the Slack API page.', 'slack-bot' );
-    }
+	}
 
 	/**
 	 * Get Plugin Author
