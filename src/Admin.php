@@ -49,6 +49,7 @@ class Admin {
 		$this->plugin = $plugin;
 		add_action( 'after_setup_theme', [ $this, 'init' ] );
         add_action( 'carbon_fields_register_fields', [ $this, 'load_fields' ] );
+        add_action( 'carbon_fields_register_fields', [ $this, 'set_fields' ] );
 	}
 
 	/**
@@ -92,5 +93,16 @@ class Admin {
 			Field::make( 'text', 'crb_slack_webhook', 'Slack WebHook' )
 			->help_text( 'e.g. https://hooks.slack.com/services/xxxxxx' )
 		) );
+    }
+
+	/**
+	 * Retrieve Carbon Field values and set private variables
+	 *
+	 * @return void
+	 */
+    public function set_fields() {
+        $this->username = carbon_get_theme_option( 'crb_slack_username' );
+        $this->channel = carbon_get_theme_option( 'crb_slack_channel' );
+        $this->webhook = carbon_get_theme_option( 'crb_slack_webhook' );
     }
 }
