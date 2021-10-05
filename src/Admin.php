@@ -105,4 +105,31 @@ class Admin {
         $this->channel = carbon_get_theme_option( 'crb_slack_channel' );
         $this->webhook = carbon_get_theme_option( 'crb_slack_webhook' );
     }
+
+	/**
+	 * Return private username
+	 *
+	 * @return string
+	 */
+	public function get_username() {
+		return $this->username;
+	}
+
+	/**
+	 * Return private channel
+	 *
+	 * @return string
+	 */
+	public function get_channel() {
+		return $this->channel;
+	}
+
+	/**
+	 * Return private webhook
+	 *
+	 * @return string
+	 */
+	public function get_webhook() {
+		return $this->webhook;
+	}
 }
