@@ -7,6 +7,8 @@
 
 namespace SlackBot;
 
+use Maknz\Slack\Client;
+
 /**
  * WordPress plugin interface.
  */
