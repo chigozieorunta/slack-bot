@@ -35,6 +35,7 @@ class Plugin {
 	 */
 	public function __construct() {
 		$this->admin = new Admin( $this );
+        add_action( 'publish_post', [ $this, 'notify_my_slack' ], 10, 2);
 	}
 
     /**
