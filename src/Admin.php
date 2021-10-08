@@ -88,16 +88,16 @@ class Admin {
 				Field::make( 'html', 'crb_desc' )
 				->set_html( $this->plugin->get_description() ),
 
-				Field::make( 'text', 'crb_slack_username', 'Slack Username' )
-				->help_text( 'e.g. John Doe' )
+				Field::make( 'text', 'crb_slack_username', __( 'Slack Username' ) )
+				->help_text( __( 'e.g. John Doe' ) )
 				->set_width( 50 ),
 
-				Field::make( 'text', 'crb_slack_channel', 'Slack Channel' )
-				->help_text( 'e.g. general' )
+				Field::make( 'text', 'crb_slack_channel', __( 'Slack Channel' ) )
+				->help_text( __( 'e.g. general' ) )
 				->set_width( 50 ),
 
-				Field::make( 'text', 'crb_slack_webhook', 'Slack WebHook' )
-				->help_text( 'e.g. https://hooks.slack.com/services/xxxxxx' ),
+				Field::make( 'text', 'crb_slack_webhook', __( 'Slack WebHook' ) )
+				->help_text( __( 'e.g. https://hooks.slack.com/services/xxxxxx' ) ),
 			)
 		);
 	}
