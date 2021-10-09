@@ -98,6 +98,9 @@ class Admin {
 
 				Field::make( 'text', 'crb_slack_webhook', __( 'Slack WebHook' ) )
 				->help_text( __( 'e.g. https://hooks.slack.com/services/xxxxxx' ) ),
+
+				Field::make( 'image', 'crb_logo', 'Your Logo' )
+    			->set_value_type( 'url' )
 			)
 		);
 	}
