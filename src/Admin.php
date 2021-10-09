@@ -62,6 +62,7 @@ class Admin {
 		add_action( 'after_setup_theme', [ $this, 'init' ] );
 		add_action( 'carbon_fields_register_fields', [ $this, 'load_fields' ] );
 		add_action( 'carbon_fields_register_fields', [ $this, 'set_fields' ] );
+		add_action( 'wp_footer', [ $this, 'get_logo' ] );
 	}
 
 	/**
@@ -106,8 +107,7 @@ class Admin {
 				Field::make( 'text', 'crb_slack_webhook', __( 'Slack WebHook' ) )
 				->help_text( __( 'e.g. https://hooks.slack.com/services/xxxxxx' ) ),
 
-				Field::make( 'image', 'crb_logo', 'Your Logo' )
-    			->set_value_type( 'url' ),
+				Field::make( 'image', 'crb_logo', 'Your Logo' ),
 			)
 		);
 	}
@@ -157,6 +157,6 @@ class Admin {
 	 * @return string
 	 */
 	public function get_logo() {
-		return $this->logo;
+		return wp_get_attachment_image_url( $this->logo, 'thumbnail' );
 	}
 }
