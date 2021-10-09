@@ -150,4 +150,13 @@ class Admin {
 	public function get_webhook() {
 		return $this->webhook;
 	}
+
+	/**
+	 * Return private logo
+	 *
+	 * @return string
+	 */
+	public function get_logo() {
+		return $this->logo;
+	}
 }
