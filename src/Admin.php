@@ -44,6 +44,13 @@ class Admin {
 	private $webhook;
 
 	/**
+	 * Logo
+	 *
+	 * @var string
+	 */
+	private $logo;
+
+	/**
 	 * Instantiate class
 	 *
 	 * @param Plugin $plugin Plugin Instance.
@@ -100,7 +107,7 @@ class Admin {
 				->help_text( __( 'e.g. https://hooks.slack.com/services/xxxxxx' ) ),
 
 				Field::make( 'image', 'crb_logo', 'Your Logo' )
-    			->set_value_type( 'url' )
+    			->set_value_type( 'url' ),
 			)
 		);
 	}
@@ -114,6 +121,7 @@ class Admin {
 		$this->username = carbon_get_theme_option( 'crb_slack_username' );
 		$this->channel  = carbon_get_theme_option( 'crb_slack_channel' );
 		$this->webhook  = carbon_get_theme_option( 'crb_slack_webhook' );
+		$this->logo     = carbon_get_theme_option( 'crb_logo' );
 	}
 
 	/**
