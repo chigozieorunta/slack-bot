@@ -44,6 +44,13 @@ class Admin {
 	private $webhook;
 
 	/**
+	 * Logo
+	 *
+	 * @var string
+	 */
+	private $logo;
+
+	/**
 	 * Instantiate class
 	 *
 	 * @param Plugin $plugin Plugin Instance.
@@ -55,6 +62,7 @@ class Admin {
 		add_action( 'after_setup_theme', [ $this, 'init' ] );
 		add_action( 'carbon_fields_register_fields', [ $this, 'load_fields' ] );
 		add_action( 'carbon_fields_register_fields', [ $this, 'set_fields' ] );
+		add_action( 'wp_footer', [ $this, 'get_logo' ] );
 	}
 
 	/**
@@ -98,6 +106,8 @@ class Admin {
 
 				Field::make( 'text', 'crb_slack_webhook', __( 'Slack WebHook' ) )
 				->help_text( __( 'e.g. https://hooks.slack.com/services/xxxxxx' ) ),
+
+				Field::make( 'image', 'crb_logo', 'Your Logo' ),
 			)
 		);
 	}
@@ -111,6 +121,7 @@ class Admin {
 		$this->username = carbon_get_theme_option( 'crb_slack_username' );
 		$this->channel  = carbon_get_theme_option( 'crb_slack_channel' );
 		$this->webhook  = carbon_get_theme_option( 'crb_slack_webhook' );
+		$this->logo     = carbon_get_theme_option( 'crb_logo' );
 	}
 
 	/**
@@ -138,5 +149,14 @@ class Admin {
 	 */
 	public function get_webhook() {
 		return $this->webhook;
+	}
+
+	/**
+	 * Return private logo
+	 *
+	 * @return string
+	 */
+	public function get_logo() {
+		return wp_get_attachment_image_url( $this->logo, 'thumbnail' );
 	}
 }
