@@ -28,9 +28,6 @@ const build = () => {
 		.pipe(dest('build/languages'));
 }
 
-exports.sass = compile;
-exports.build = build;
-
 const vendor = () => {
 	const composer = fs.readFileSync('./composer.json', 'utf8');
 	const dependencies = Object.keys(JSON.parse(composer).require);
@@ -42,3 +39,6 @@ const vendor = () => {
 		}
 	});
 }
+
+exports.sass = compile;
+exports.build = build;
