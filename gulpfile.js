@@ -5,12 +5,27 @@ const minify = require('gulp-clean-css');
 const autoprefixer = require('gulp-autoprefixer');
 const sass = require('gulp-sass')(require('sass'));
 
+const paths = {
+	src: {
+		css: './css/src/**/*.scss',
+		js: './js/src/**/*.js'
+	},
+	dest: {
+		css: './css/dist/css',
+		js: './js/dist/js'
+	}
+}
+
 const compile = () => {
-	return src('./css/src/**/*.scss')
+	return src(paths.src.css)
 		.pipe(sass())
 		.pipe(autoprefixer())
 		.pipe(minify())
-		.pipe(dest('./assets/dist/css'));
+		.pipe(dest(paths.dest.css));
+}
+
+const observe = () => {
+	watch(paths.src.css, compile);
 }
 
 const build = () => {
@@ -42,3 +57,4 @@ const vendor = () => {
 
 exports.sass = compile;
 exports.build = build;
+exports.watch = observe;
