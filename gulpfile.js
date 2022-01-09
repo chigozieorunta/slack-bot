@@ -1,5 +1,21 @@
 const fs = require('fs');
-const gulp = require('gulp');
+
+const { src, dest, watch } = require('gulp');
+const minify = require('gulp-clean-css');
+const sass = require('gulp-sass')(require('sass'));
+
+const compile = () => {
+	return src('./css/src/**/*.scss')
+		.pipe(sass())
+		.pipe(autoprefixer())
+		.pipe(minify())
+		.pipe(dest('./assets/dist/css')
+	);
+}
+
+const build = () => {
+	return('')
+}
 
 gulp.task('build', async function () {
 	gulp.src('src/*.php')
