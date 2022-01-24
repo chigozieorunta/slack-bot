@@ -80,6 +80,7 @@ class Admin {
 	 * @return void
 	 */
 	public function load_fields() {
+		ob_start();
 		Container::make( 'theme_options', $this->plugin->get_title() )
 
 		->set_page_file( 'slack-bot' )
