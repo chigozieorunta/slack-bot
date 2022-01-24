@@ -1,4 +1,4 @@
-=== Plugin Name ===
+=== Slack Bot ===
 Contributors: (this should be a list of wordpress.org userid's)
 Donate link: https://example.com/
 Tags: tag1, tag2
