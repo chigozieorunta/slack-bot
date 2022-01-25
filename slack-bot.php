@@ -3,7 +3,7 @@
  * Plugin Name: Slack Bot
  * Plugin URI:  https://github.com/chigozieorunta/slack-bot
  * Description: Notify your Slack channel when posts have been created or published on your WordPress site.
- * Version:     1.0.0
+ * Version:     0.1.0
  * Author:      Chigozie Orunta
  * Author URI:  https://github.com/chigozieorunta
  * License:     GPL v2 or later
