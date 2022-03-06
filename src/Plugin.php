@@ -48,8 +48,7 @@ class Plugin {
 	 */
 	public function notify_my_slack( $post_id, $post ) {
 		$slack_hook    = $this->admin->get_webhook();
-		$slack_message = 'New Post alert | %3$s: *%2$s* - %1$s';
-		$slack_message = sprintf( $slack_message, get_permalink( $post_id ), $post->post_title, $post->post_date );
+		$slack_message = $this->admin->get_message();
 		$logo          = $this->admin->get_logo() ? $this->admin->get_logo() : ':ghost';
 		$settings      = [
 			'username' => $this->admin->get_username(),
