@@ -165,6 +165,7 @@ class Admin {
 	 * Return private message
 	 *
 	 * @param integer $post_id Post ID.
+	 * @param object  $post Post object.
 	 *
 	 * @return string
 	 */
