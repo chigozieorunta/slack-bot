@@ -175,4 +175,17 @@ class Admin {
 
 		return $slack_message;
 	}
+
+	/**
+	 * Return private settings
+	 *
+	 *
+	 * @return array
+	 */
+	public function get_settings() {
+		return [
+			'username' => $this->admin->get_username(),
+			'channel'  => $this->admin->get_channel(),
+		];
+	}
 }
