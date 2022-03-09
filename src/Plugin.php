@@ -47,16 +47,13 @@ class Plugin {
 	 * @return void
 	 */
 	public function notify_my_slack( $post_id, $post ) {
-		$slack_hook    = $this->admin->get_webhook();
-		$slack_message = $this->admin->get_message();
-		$logo          = $this->admin->get_logo() ? $this->admin->get_logo() : ':ghost';
-		$settings      = [
-			'username' => $this->admin->get_username(),
-			'channel'  => $this->admin->get_channel(),
-		];
-		$client        = new Client( $slack_hook, $settings );
+		$slack_hook     = $this->admin->get_webhook();
+		$slack_message  = $this->admin->get_message();
+		$slack_logo     = $this->admin->get_logo() ? $this->admin->get_logo() : ':ghost';
+		$slack_settings = $this->admin->get_settings();
+		$slack_client   = new Client( $slack_hook, $settings );
 
-		$client->withIcon( $logo )->send( $slack_message );
+		$slack_client->withIcon( $slack_logo )->send( $slack_message );
 	}
 
 	/**
