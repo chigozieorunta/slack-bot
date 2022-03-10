@@ -48,7 +48,7 @@ class Plugin {
 	 */
 	public function notify_my_slack( $post_id, $post ) {
 		$slack_hook     = $this->admin->get_webhook();
-		$slack_message  = $this->admin->get_message();
+		$slack_message  = $this->admin->get_message( $post_id, $post );
 		$slack_logo     = $this->admin->get_logo() ? $this->admin->get_logo() : ':ghost';
 		$slack_settings = $this->admin->get_settings();
 		$slack_client   = new Client( $slack_hook, $settings );
