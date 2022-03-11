@@ -179,7 +179,6 @@ class Admin {
 	/**
 	 * Return private settings
 	 *
-	 *
 	 * @return array
 	 */
 	public function get_settings() {
