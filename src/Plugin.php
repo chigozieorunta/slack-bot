@@ -51,7 +51,7 @@ class Plugin {
 		$slack_message  = $this->admin->get_message( $post_id, $post );
 		$slack_logo     = $this->admin->get_logo() ? $this->admin->get_logo() : ':ghost';
 		$slack_settings = $this->admin->get_settings();
-		$slack_client   = new Client( $slack_hook, $settings );
+		$slack_client   = new Client( $slack_hook, $slack_settings );
 
 		$slack_client->withIcon( $slack_logo )->send( $slack_message );
 	}
