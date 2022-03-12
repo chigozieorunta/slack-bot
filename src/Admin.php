@@ -183,8 +183,8 @@ class Admin {
 	 */
 	public function get_settings() {
 		return [
-			'username' => $this->admin->get_username(),
-			'channel'  => $this->admin->get_channel(),
+			'username' => $this->get_username(),
+			'channel'  => $this->get_channel(),
 		];
 	}
 }
