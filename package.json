@@ -27,7 +27,8 @@
     "test:php:coverage": "composer test",
     "report-coverage": "composer coverage",
     "docker": "docker-compose run --workdir=/var/www/html/wp-content/plugins/slack-bot wordpress",
-    "vagrant": "vagrant ssh -- COMPOSE_FILE=/vagrant/docker-compose.yml docker-compose run --workdir=/var/www/html/wp-content/plugins/slack-bot wordpress"
+    "vagrant": "vagrant ssh -- COMPOSE_FILE=/vagrant/docker-compose.yml docker-compose run --workdir=/var/www/html/wp-content/plugins/slack-bot wordpress",
+    "plugin-build": "bin/build.sh"
   },
   "devDependencies": {
     "@wordpress/block-editor": "3.6.0",
