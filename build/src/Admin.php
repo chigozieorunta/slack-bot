@@ -160,4 +160,31 @@ class Admin {
 	public function get_logo() {
 		return wp_get_attachment_image_url( $this->logo, 'thumbnail' );
 	}
+
+	/**
+	 * Return private message
+	 *
+	 * @param integer $post_id Post ID.
+	 * @param object  $post Post object.
+	 *
+	 * @return string
+	 */
+	public function get_message( $post_id, $post ) {
+		$slack_message = 'New Post alert | %3$s: *%2$s* - %1$s';
+		$slack_message = sprintf( $slack_message, get_permalink( $post_id ), $post->post_title, $post->post_date );
+
+		return $slack_message;
+	}
+
+	/**
+	 * Return private settings
+	 *
+	 * @return array
+	 */
+	public function get_settings() {
+		return [
+			'username' => $this->get_username(),
+			'channel'  => $this->get_channel(),
+		];
+	}
 }
